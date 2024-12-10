@@ -1,0 +1,33 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "2123a0370f3d2d14f68e5b317da5368c"
+name = "Althea Inventory Sync"
+handle = "althea-inventory-sync"
+application_url = "https://travels-alumni-eau-sim.trycloudflare.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "karatada-dev-test.myshopify.com"
+include_config_on_deploy = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products"
+
+[auth]
+redirect_urls = [
+  "https://travels-alumni-eau-sim.trycloudflare.com/auth/callback",
+  "https://travels-alumni-eau-sim.trycloudflare.com/auth/shopify/callback",
+  "https://travels-alumni-eau-sim.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-10"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+[pos]
+embedded = false
